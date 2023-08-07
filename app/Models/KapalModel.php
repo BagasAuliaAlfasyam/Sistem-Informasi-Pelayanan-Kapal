@@ -21,9 +21,4 @@ class KapalModel extends Model
     {
         return $this->hasOne(Schedule::class, 'id_kapal');
     }
-    
-    public function sempak()
-    {
-        return $this->hasOne(Sempak::class, 'id_kapal');
-    }
 }

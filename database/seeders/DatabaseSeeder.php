@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([DashboardTableSeeder::class, KapalModelSeeder::class, KeperluanSeeder::class, PenjadwalanKapalSeeder::class, DetailModelSeeder::class, SempakSeeder::class]);
+        $this->call([DashboardTableSeeder::class, KapalModelSeeder::class, PenjadwalanKapalSeeder::class, DetailModelSeeder::class]);
 
         User::factory()->create([
             'name' => 'Admin',

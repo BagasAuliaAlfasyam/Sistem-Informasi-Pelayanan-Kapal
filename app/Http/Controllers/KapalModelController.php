@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Penjadwalan;
 use App\Http\Requests\StoreKapalModelRequest;
 use App\Http\Requests\UpdateKapalModelRequest;
+use App\Models\Details;
 use App\Models\KapalModel;
-use App\Models\Keperluan;
-use App\Models\PenjadwalanKapal;
-use App\Models\PenjadwalanModel;
+use App\Models\Schedule;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class KapalModelController extends Controller
 {
@@ -22,7 +19,7 @@ class KapalModelController extends Controller
      */
     public function index()
     {
-        $keperluan = Keperluan::all();
+        $keperluan = Details::all();
         return view('pages.kapal.list-kapal.index', [
             'ships' => KapalModel::paginate(10),
             'keperluan' => $keperluan,
@@ -116,7 +113,7 @@ class KapalModelController extends Controller
         //     ->join('keperluans', 'kapal.id', '=', 'keperluans.id_kapal');
         // ->select('kapal.nama_kapal', 'kapal.keagenan', 'kapal.loa', 'kapal.gt', 'kapal.bendera', 'kapal.created_at as tanggal', 'penjadwalan_kapals.tanggal_tiba', 'penjadwalan_kapals.tiba_dari', 'penjadwalan_kapals.posisi_tambat', 'penjadwalan_kapals.tujuan', 'penjadwalan_kapals.tanggal_rencana_berangkat', 'keperluans.muat_barang', 'keperluans.bongkar', 'keperluans.jenis_barang', 'keperluans.keterangan');
         $kapal = KapalModel::all();
-        $penjadwalan = PenjadwalanModel::all();
+        $penjadwalan = Schedule::all();
         if (count($kapal) != count($penjadwalan)) {
             return redirect()
                 ->route('kapal.index')

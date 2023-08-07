@@ -4,7 +4,7 @@
     <!-- Welcome banner -->
     <x-dashboard.welcome-banner />
 
-    {{-- <!-- Dashboard actions -->
+    <!-- Dashboard actions -->
     <div class="sm:flex sm:justify-between sm:items-center mb-8">
 
       <!-- Left: Avatars -->
@@ -71,6 +71,6 @@
       <x-dashboard.dashboard-card-12 />
 
       <!-- Card (Income/Expenses) -->
-      <x-dashboard.dashboard-card-13 /> --}}
+      <x-dashboard.dashboard-card-13 />
 
 </x-app-layout>

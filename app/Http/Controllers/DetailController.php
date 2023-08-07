@@ -6,7 +6,6 @@ use App\Http\Requests\Details;
 use App\Http\Requests\UpdateDetails;
 use App\Models\Details as ModelsDetails;
 use App\Models\KapalModel;
-use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
@@ -17,7 +16,7 @@ class DetailController extends Controller
      */
     public function index()
     {
-        return view('pages.kapal.keperluan.index', ['ships' => KapalModel::all()]);
+        return view('pages.kapal.keperluan.index', ['ships' => KapalModel::with('keperluan')->paginate(10)]);
     }
 
     /**

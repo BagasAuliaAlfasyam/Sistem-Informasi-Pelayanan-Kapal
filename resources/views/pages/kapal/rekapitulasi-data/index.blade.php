@@ -60,9 +60,9 @@
               <td>{{ $kapal->loa }}</td>
               <td>{{ $kapal->gt }}</td>
               <td>{{ $kapal->penjadwalan->tiba_dari }}</td>
-              <td>{{ $kapal->penjadwalan->tanggal_tiba }}</td>
+              <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_tiba)->format('d-m-Y') }}</td>
               <td>{{ $kapal->penjadwalan->tujuan }}</td>
-              <td>{{ $kapal->penjadwalan->tanggal_rencana_berangkat }}</td>
+              <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_rencana_berangkat)->format('d-m-Y') }}</td>
               <td>{{ $kapal->keperluan->bongkar }}</td>
               <td>{{ $kapal->keperluan->muat_barang }}</td>
               <td>{{ $kapal->keperluan->jenis_barang }}</td>

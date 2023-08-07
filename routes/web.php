@@ -34,11 +34,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::resource('kapal', KapalModelController::class);
 
         // Route for detail of kapal
-        Route::resource('details', DetailController::class);
+        Route::resource('details', DetailController::class)->except(['destroy']);
 
         // Route for penjadwalan of kapal
-        Route::resource('schedules', ScheduleController::class);
-        Route::resource('sempak', SempakController::class);
+        Route::resource('schedules', ScheduleController::class)->except(['destroy']);
 
         Route::get('rekapitulasi-data', [KapalModelController::class, 'recapitulation'])->name('rekapitulasi.index');
     });
