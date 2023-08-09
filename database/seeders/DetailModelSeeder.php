@@ -18,6 +18,7 @@ class DetailModelSeeder extends Seeder
         $details = [
             [
                 'id_kapal' => 1,
+                'nama_kapal' => 'MT. Triaksa 17',
                 'muat_barang' => null,
                 'bongkar' => null,
                 'jenis_barang' => 'BBM',
@@ -25,6 +26,7 @@ class DetailModelSeeder extends Seeder
             ],
             [
                 'id_kapal' => 2,
+                'nama_kapal' => 'MT. Sky Blue',
                 'muat_barang' => 3000,
                 'bongkar' => null,
                 'jenis_barang' => 'CPO',

@@ -19,6 +19,7 @@ class PenjadwalanKapalSeeder extends Seeder
         $jadwals = [
             [
                 'id_kapal' => 1,
+                'nama_kapal' => 'MT. Triaksa 17',
                 'tanggal_tiba' => '2023-08-09',
                 'tiba_dari' => 'awokawok',
                 'posisi_tambat' => 'wkkwkw',
@@ -27,6 +28,7 @@ class PenjadwalanKapalSeeder extends Seeder
             ],
             [
                 'id_kapal' => 2,
+                'nama_kapal' => 'MT. Sky Blue',
                 'tanggal_tiba' => '2023-08-10',
                 'tiba_dari' => 'sipp',
                 'posisi_tambat' => 'pinggiran jalan',
