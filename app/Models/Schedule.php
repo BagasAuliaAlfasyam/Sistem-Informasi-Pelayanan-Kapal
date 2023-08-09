@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
-    protected $table = 'jadwals';
+    protected $table = 'schedules';
     protected $guarded = ['id'];
 
 }
