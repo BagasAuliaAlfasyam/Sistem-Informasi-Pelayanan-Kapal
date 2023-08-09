@@ -1,30 +1,37 @@
 <x-app-layout>
-  <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-    <div class="form-group">
-      <label for="date_filter">Filter by Date:</label>
+  <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto" x-data="{ selectedMonth: '', selectedYear: '' }">
+    <div class="flex gap-2">
+      <div class="form-group">
+        <label for="filter-month">Filter by Month:</label>
+        <select id="filter-month" class="form-select" x-model="selectedMonth">
+          <option value="1">Januari</option>
+          <option value="2">Februari</option>
+          <option value="3">Maret</option>
+          <option value="4">April</option>
+          <option value="5">Mei</option>
+          <option value="6">Juni</option>
+          <option value="7">Juli</option>
+          <option value="8">Agustus</option>
+          <option value="9">September</option>
+          <option value="10">Oktober</option>
+          <option value="11">November</option>
+          <option value="12">Desember</option>
+        </select>
+      </div>
 
-      <form method="get" action="{{ route('rekapitulasi.index') }}">
-        <div class="input-group">
-          <select class="form-select" name="date_filter">
-            <option value="">All Dates</option>
-            <option value="today" {{ $dateFilter == 'today' ? 'selected' : '' }}>Today</option>
-            <option value="yesterday" {{ $dateFilter == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
-            <option value="this_week" {{ $dateFilter == 'this_week' ? 'selected' : '' }}>This Week</option>
-            <option value="last_week" {{ $dateFilter == 'last_week' ? 'selected' : '' }}>Last Week</option>
-            <option value="this_month" {{ $dateFilter == 'this_month' ? 'selected' : '' }}>This Month</option>
-            <option value="last_month" {{ $dateFilter == 'last_month' ? 'selected' : '' }}>Last Month</option>
-            <option value="this_year" {{ $dateFilter == 'this_year' ? 'selected' : '' }}>This Year</option>
-            <option value="last_year" {{ $dateFilter == 'last_year' ? 'selected' : '' }}>Last Year</option>
-          </select>
-          <button type="submit" class="btn btn-primary">Filter</button>
-        </div>
-      </form>
-
+      <div class="form-group">
+        <label for="filter-year">Filter by Year:</label>
+        <select x-model="selectedYear" class="form-select" id="filter-year">
+          @for ($year = now()->year; $year >= 2016; $year--)
+            <option value="{{ $year }}" {{ now()->format('Y') == $year ? 'selected' : '' }}>{{ $year }}
+            </option>
+          @endfor
+        </select>
+      </div>
     </div>
-    <div class="overflow-x-auto mt-4">
-      {{-- {{ $ships->links() }} --}}
 
-      <table class="table table-xs text-center even:bg-slate-500">
+    <div id="filtered-data" class="overflow-x-auto mt-4">
+      <table id="filtered-table" class="table table-xs text-center even:bg-slate-500">
         <thead class="text-slate-600">
           <tr>
             <th rowspan="2">No.</th>
@@ -53,7 +60,8 @@
         </thead>
         <tbody class="capitalize">
           @foreach ($ships as $kapal)
-            <tr class="hover:bg-slate-200 hover:text-slate-500">
+            <tr class="hover:bg-slate-200 hover:text-slate-500"
+              x-show="(selectedMonth === '' || parseInt(selectedMonth) === {{ Carbon\Carbon::parse($kapal->created_at)->format('m') }}) && (selectedYear === '' || parseInt(selectedYear) === {{ Carbon\Carbon::parse($kapal->created_at)->format('Y') }})">
               <th>{{ $loop->iteration }}</th>
               <td>{{ $kapal->nama_kapal }}</td>
               <td>{{ $kapal->keagenan }}</td>
@@ -62,7 +70,8 @@
               <td>{{ $kapal->penjadwalan->tiba_dari }}</td>
               <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_tiba)->format('d-m-Y') }}</td>
               <td>{{ $kapal->penjadwalan->tujuan }}</td>
-              <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_rencana_berangkat)->format('d-m-Y') }}</td>
+              <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_rencana_berangkat)->format('d-m-Y') }}
+              </td>
               <td>{{ $kapal->keperluan->bongkar }}</td>
               <td>{{ $kapal->keperluan->muat_barang }}</td>
               <td>{{ $kapal->keperluan->jenis_barang }}</td>
@@ -74,6 +83,10 @@
           @endforeach
         </tbody>
       </table>
+
+			<div class="mt-5">
+        {{ $ships->links() }}
+      </div>
     </div>
   </div>
 </x-app-layout>
