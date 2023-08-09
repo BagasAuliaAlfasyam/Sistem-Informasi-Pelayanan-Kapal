@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_kapal')->nullable();
             $table->foreign('id_kapal')->references('id')->on('kapal')->onDelete('cascade');
+            $table->string('nama_kapal');
             $table->string('muat_barang')->nullable();
             $table->string('bongkar')->nullable();
             $table->string('jenis_barang')->nullable();
