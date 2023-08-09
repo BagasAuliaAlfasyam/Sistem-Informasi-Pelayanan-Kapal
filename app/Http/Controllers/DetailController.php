@@ -16,7 +16,7 @@ class DetailController extends Controller
      */
     public function index()
     {
-        return view('pages.kapal.keperluan.index', ['ships' => KapalModel::with('keperluan')->paginate(10)]);
+        return view('pages.kapal.keperluan.index', ['details' => ModelsDetails::paginate(10)]);
     }
 
     /**
@@ -38,7 +38,7 @@ class DetailController extends Controller
     public function store(Details $request)
     {
         ModelsDetails::create($request->validated());
-        return redirect()->route('kapal.index');
+        return redirect()->route('details.index');
     }
 
     /**
@@ -73,7 +73,7 @@ class DetailController extends Controller
     public function update(UpdateDetails $request, ModelsDetails $detail)
     {
         $detail::where('id', $detail->id)->update($request->validated());
-        return redirect()->route('kapal.index');
+        return redirect()->route('details.index');
     }
 
     /**

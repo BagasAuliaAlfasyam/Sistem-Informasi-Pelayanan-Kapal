@@ -45,7 +45,7 @@ class KapalModelController extends Controller
     public function store(StoreKapalModelRequest $request)
     {
         KapalModel::create($request->validated());
-        return redirect()->route('rincian.create');
+        return redirect()->route('kapal.index');
     }
 
     /**
