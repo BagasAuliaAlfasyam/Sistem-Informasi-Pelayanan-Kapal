@@ -6,11 +6,12 @@
     </a>
 
 {{-- @dd($detail) --}}
-    <form action="{{ route('details.update', [$detail]) }}" class="w-full" method="POST">
+    <form action="{{ route('details.update', [$detail]) }}" class="w-full mb-5" method="POST">
       @csrf
       @method('put')
 
       <input type="hidden" name="id_kapal" value="{{ $detail->id_kapal }}">
+      <input type="hidden" name="nama_kapal" value="{{ $detail->nama_kapal }}">
       
       <div class="mb-4">
         <label for="muatBarang" class="block mb-3">Muat Barang</label>

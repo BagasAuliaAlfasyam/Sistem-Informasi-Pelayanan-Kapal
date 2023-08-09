@@ -68,9 +68,9 @@
         {{ $ships->links() }}
       </div>
 
-      @foreach ($ships as $kapal)
+      @foreach ($keperluan as $detail)
         <!-- Open the modal using ID.showModal() method -->
-        <dialog id="kapal_{{ $kapal->id }}" class="modal">
+        <dialog id="kapal_{{ $detail->id_kapal }}" class="modal">
           <form method="dialog" class="modal-box w-11/12 max-w-5xl shadow shadow-white">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             <h3 class="font-bold text-lg mb-4 pl-3">Rincian</h3>
@@ -85,10 +85,10 @@
                 </tr>
               </thead>
               <tbody class="capitalize">
-                <td>{{ $kapal->keperluan->bongkar }}</td>
-                <td>{{ $kapal->keperluan->muat_barang }}</td>
-                <td>{{ $kapal->keperluan->jenis_barang }}</td>
-                <td>{{ $kapal->keperluan->keterangan }}</td>
+                <td>{{ $detail->bongkar }}</td>
+                <td>{{ $detail->muat_barang }}</td>
+                <td>{{ $detail->jenis_barang }}</td>
+                <td>{{ $detail->keterangan }}</td>
               </tbody>
             </table>
           </form>

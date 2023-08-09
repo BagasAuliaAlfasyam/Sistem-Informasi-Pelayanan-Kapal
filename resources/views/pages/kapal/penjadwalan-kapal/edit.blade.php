@@ -10,6 +10,8 @@
       @method('put')
 
       <input type="hidden" name="id_kapal" value="{{ $schedule->id_kapal }}">
+      <input type="hidden" name="nama_kapal" value="{{ $schedule->nama_kapal }}">
+
       <div class="mb-4">
         <label for="tanggalTiba" class="block mb-3">Tanggal Tiba</label>
         <input type="date" id="tanggalTiba" class="input input-bordered @error ('tanggal_tiba') input-error @enderror bg-slate-800 w-full focus:text-slate-400" name="tanggal_tiba" value="{{ $schedule->tanggal_tiba }}" />

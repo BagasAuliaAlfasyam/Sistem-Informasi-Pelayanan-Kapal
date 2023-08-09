@@ -4,7 +4,7 @@
     <a href="{{ route('kapal.index') }}" class="absolute right-0 top-0 pt-8 pr-8">
       <button class="btn btn-sm btn-outline px-4">Back</button>
     </a>
-    <form action="{{ route('kapal.update', [$kapal]) }}" class="w-full" method="post">
+    <form action="{{ route('kapal.update', [$kapal]) }}" class="w-full mb-5" method="post">
       @csrf
       @method('put')
       <div class="mb-4">
