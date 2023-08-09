@@ -24,11 +24,12 @@ class StoreSchedule extends FormRequest
     public function rules()
     {
         return [
-            'id_kapal' => 'required|unique:App\Models\Schedule,id_kapal',
-            'tanggal_tiba' => 'nullable|date',
-            'tiba_dari' => 'nullable',
-            'posisi_tambat' => 'nullable',
-            'tujuan' => 'nullable',
+            'id_kapal'                  => 'required|unique:App\Models\Schedule,id_kapal',
+            'nama_kapal'                => 'required',
+            'tanggal_tiba'              => 'nullable|date',
+            'tiba_dari'                 => 'nullable',
+            'posisi_tambat'             => 'nullable',
+            'tujuan'                    => 'nullable',
             'tanggal_rencana_berangkat' => 'nullable|date',
         ];
     }

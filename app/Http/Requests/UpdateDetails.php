@@ -25,6 +25,7 @@ class UpdateDetails extends FormRequest
     {
         return [
             'id_kapal'      => 'required',
+            'nama_kapal'    => 'required',
             'muat_barang'   => 'nullable|numeric',
             'bongkar'       => 'nullable|numeric',
             'jenis_barang'  => 'nullable',

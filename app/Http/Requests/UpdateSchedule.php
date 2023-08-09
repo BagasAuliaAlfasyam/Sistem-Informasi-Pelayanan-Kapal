@@ -24,11 +24,12 @@ class UpdateSchedule extends FormRequest
     public function rules()
     {
         return [
-            'id_kapal' => 'required',
-            'tanggal_tiba' => 'nullable|date',
-            'tiba_dari' => 'nullable',
-            'posisi_tambat' => 'nullable',
-            'tujuan' => 'nullable',
+            'id_kapal'                  => 'required',
+            'nama_kapal'                => 'required',
+            'tanggal_tiba'              => 'nullable|date',
+            'tiba_dari'                 => 'nullable',
+            'posisi_tambat'             => 'nullable',
+            'tujuan'                    => 'nullable',
             'tanggal_rencana_berangkat' => 'nullable|date',
         ];
     }

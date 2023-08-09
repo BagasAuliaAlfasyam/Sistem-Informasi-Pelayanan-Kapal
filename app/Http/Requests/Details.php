@@ -25,6 +25,7 @@ class Details extends FormRequest
     {
         return [
             'id_kapal'      => 'required|unique:App\Models\Details,id_kapal',
+            'nama_kapal'    => 'required',
             'muat_barang'   => 'nullable|numeric',
             'bongkar'       => 'nullable|numeric',
             'jenis_barang'  => 'nullable',
