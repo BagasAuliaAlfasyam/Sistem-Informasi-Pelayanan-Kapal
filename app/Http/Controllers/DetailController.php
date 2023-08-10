@@ -16,7 +16,8 @@ class DetailController extends Controller
      */
     public function index()
     {
-        return view('pages.kapal.keperluan.index', ['details' => ModelsDetails::paginate(10)]);
+        $details = ModelsDetails::paginate(10)->withPath(route('details.index'));
+        return view('pages.kapal.keperluan.index', ['details' => $details]);
     }
 
     /**

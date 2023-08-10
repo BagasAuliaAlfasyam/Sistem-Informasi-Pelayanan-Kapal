@@ -62,7 +62,7 @@
           @foreach ($ships as $kapal)
             <tr class="hover:bg-slate-200 hover:text-slate-500"
               x-show="(selectedMonth === '' || parseInt(selectedMonth) === {{ Carbon\Carbon::parse($kapal->created_at)->format('m') }}) && (selectedYear === '' || parseInt(selectedYear) === {{ Carbon\Carbon::parse($kapal->created_at)->format('Y') }})">
-              <th>{{ $loop->iteration }}</th>
+              <th>{{ $ships->firstItem() + $loop->index }}</th>
               <td>{{ $kapal->nama_kapal }}</td>
               <td>{{ $kapal->keagenan }}</td>
               <td>{{ $kapal->loa }}</td>

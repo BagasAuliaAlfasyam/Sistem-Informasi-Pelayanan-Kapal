@@ -16,8 +16,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $schedules = Schedule::paginate(10)->withPath(route('schedules.index'));
         $kapal = KapalModel::all();
-        return view('pages.kapal.penjadwalan-kapal.index', ['ships' => $kapal, 'schedules' => Schedule::paginate(10)]);
+        return view('pages.kapal.penjadwalan-kapal.index', ['ships' => $kapal, 'schedules' => $schedules]);
     }
 
     /**

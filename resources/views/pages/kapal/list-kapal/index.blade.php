@@ -26,7 +26,7 @@
           @foreach ($ships as $kapal)
               
             <tr class="hover:bg-slate-200 hover:text-slate-500">
-              <th>{{ $loop->iteration }}</th>
+              <th>{{ $ships->firstItem() + $loop->index }}</th>
               <td>{{ $kapal->nama_kapal }}</td>
               <td>{{ $kapal->keagenan }}</td>
               <td>{{ $kapal->loa }}</td>

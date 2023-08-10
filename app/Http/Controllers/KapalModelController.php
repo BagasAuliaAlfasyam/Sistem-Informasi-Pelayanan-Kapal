@@ -19,9 +19,10 @@ class KapalModelController extends Controller
      */
     public function index()
     {
+        $ships = KapalModel::paginate(10)->withPath(route('kapal.index'));
         $keperluan = Details::all();
         return view('pages.kapal.list-kapal.index', [
-            'ships' => KapalModel::paginate(10),
+            'ships' => $ships,
             'keperluan' => $keperluan,
         ]);
     }
@@ -106,7 +107,7 @@ class KapalModelController extends Controller
 
     public function recapitulation(Request $request)
     {
-        $ships = KapalModel::paginate(10);
+        $ships = KapalModel::paginate(10)->withPath(route('rekapitulasi.index'));
         $kapal = KapalModel::all();
         $penjadwalan = Schedule::all();
         if (count($kapal) != count($penjadwalan)) {

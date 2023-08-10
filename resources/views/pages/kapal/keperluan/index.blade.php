@@ -21,7 +21,7 @@
         <tbody class="capitalize">
           @foreach ($details as $detail)
             <tr class="hover:bg-slate-200 hover:text-slate-500">
-              <th>{{ $loop->iteration }}</th>
+              <th>{{ $details->firstItem() + $loop->index }}</th>
               <td>{{ $detail->nama_kapal }}</td>
               <td>{{ $detail->muat_barang }}</td>
               <td>{{ $detail->bongkar }}</td>

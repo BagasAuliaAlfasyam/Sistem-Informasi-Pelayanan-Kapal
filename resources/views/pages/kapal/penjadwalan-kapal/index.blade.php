@@ -22,7 +22,7 @@
         <tbody class="capitalize">
           @forelse ($schedules as $schedule)
             <tr class="hover:bg-slate-200 hover:text-slate-500">
-              <th>{{ $loop->iteration }}</th>
+              <th>{{ $schedules->firstItem() + $loop->index }}</th>
               <td>{{ $schedule->nama_kapal }}</td>
               <td>{{ Carbon\Carbon::parse($schedule->tanggal_tiba)->format('d-m-Y') }}</td>
               <td>{{ $schedule->tiba_dari }}</td>
