@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="px-4 sm:px-6 lg:px-8 pt-4 w-full max-w-9xl relative mx-auto">
     <h1 class="font-bold mb-3 text-3xl">Edit Rincian Data Kapal</h1>
-    <a href="{{ route('kapal.index') }}" class="absolute right-0 top-0 pt-8 pr-8">
+    <a href="{{ route('details.index') }}" class="absolute right-0 top-0 pt-8 pr-8">
       <button class="btn btn-sm btn-outline px-4">Back</button>
     </a>
 
