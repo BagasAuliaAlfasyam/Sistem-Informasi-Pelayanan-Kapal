@@ -17,7 +17,7 @@ class DetailController extends Controller
     public function index()
     {
         $details = ModelsDetails::paginate(10)->withPath(route('details.index'));
-        return view('pages.kapal.keperluan.index', ['details' => $details]);
+        return view('pages.kapal.rincian.index', ['details' => $details]);
     }
 
     /**
@@ -27,7 +27,7 @@ class DetailController extends Controller
      */
     public function create()
     {
-        return view('pages.kapal.keperluan.add', ['ships' => KapalModel::all()]);
+        return view('pages.kapal.rincian.add', ['ships' => KapalModel::all()]);
     }
 
     /**
@@ -61,7 +61,7 @@ class DetailController extends Controller
      */
     public function edit(ModelsDetails $detail)
     {
-        return view('pages.kapal.keperluan.edit', compact('detail'));
+        return view('pages.kapal.rincian.edit', compact('detail'));
     }
 
     /**

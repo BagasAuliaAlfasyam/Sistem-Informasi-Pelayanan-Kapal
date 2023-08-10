@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreKapalModelRequest extends FormRequest
+class UpdateKapalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +29,7 @@ class StoreKapalModelRequest extends FormRequest
             'loa' => 'required|numeric',
             'gt' => 'required|numeric',
             'pemilik' => 'nullable|boolean',
-            'bendera' => 'required',
-            'created_at' => 'required|date'
+            'bendera' => 'required'
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailController;
-use App\Http\Controllers\KapalModelController;
+use App\Http\Controllers\KapalController;
 use App\Http\Controllers\KeperluanController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SempakController;
@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::group(['prefix' => 'dashboard'], function () {
         // Route for Kapal pages
-        Route::resource('kapal', KapalModelController::class);
+        Route::resource('kapal', KapalController::class);
 
         // Route for detail of kapal
         Route::resource('details', DetailController::class)->except(['destroy']);
@@ -39,7 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // Route for penjadwalan of kapal
         Route::resource('schedules', ScheduleController::class)->except(['destroy']);
 
-        Route::get('rekapitulasi-data', [KapalModelController::class, 'recapitulation'])->name('rekapitulasi.index');
+        Route::get('rekapitulasi-data', [KapalController::class, 'recapitulation'])->name('rekapitulasi.index');
     });
 
     Route::redirect('/tambah-akun', 'register')->name('register');
