@@ -26,7 +26,7 @@
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
 
-  <main class="bg-white">
+  <main>
 
     <div class="relative flex">
 

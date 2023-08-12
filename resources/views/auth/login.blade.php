@@ -1,6 +1,6 @@
 <x-authentication-layout>
-    <h1 class="text-3xl text-slate-800 text-center  font-bold mb-6">{{ __('Pelayanan Data Kapal') }}</h1>
-    <h2 class="text-xl text-slate-800 text-center  font-bold mb-6">{{ __('PT.Persero Indonesia Regional I Lhokseumawe') }}</h2>
+    <h1 class="text-3xl text-center font-bold mb-6">{{ __('Pelayanan Data Kapal') }}</h1>
+    <h2 class="text-xl text-center font-bold mb-6">{{ __('PT.Persero Indonesia Regional I Lhokseumawe') }}</h2>
     @if (session('status'))
         <div class="mb-4 font-medium text-sm text-green-600">
             {{ session('status') }}
