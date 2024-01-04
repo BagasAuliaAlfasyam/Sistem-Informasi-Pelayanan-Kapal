@@ -1,13 +1,11 @@
 <div>
   <!-- Sidebar backdrop (mobile only) -->
-  <div class="fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200"
-    :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></div>
+  <aside class="fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200"
+    :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></aside>
 
   <!-- Sidebar -->
-  <div id="sidebar"
-    class="flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out"
-    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false" @keydown.escape.window="sidebarOpen = false"
-    x-cloak="lg">
+  <aside id="sidebar" x-cloak="lg" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false"
+    class="flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out" @keydown.escape.window="sidebarOpen = false">
 
     <!-- Sidebar header -->
     <div class="flex justify-between mb-10 pr-3 sm:px-2">
@@ -33,6 +31,7 @@
           <span class="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">•••</span>
           <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Pages</span>
         </h3>
+
         <ul class="mt-3">
           <!-- Dashboard -->
           <li class="px-3 py-2 rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard')) {{ 'bg-slate-900' }} @endif"
@@ -54,13 +53,12 @@
               </div>
             </a>
           </li>
+
           <!-- Kapal -->
-          <li
-            class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/kapal*')) {{ 'bg-slate-900' }} @elseif (Request::is('dashboard/details*')) {{ 'bg-slate-900' }} @endif"
-            x-data="{ open: {{ Request::is('dashboard/kapal*', 'dashboard/details*') ? 1 : 0 }} }">
-            <div
-              class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['kapal'])) {{ 'hover:text-white' }} @endif"
-              @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
+          <li x-data="{ open: {{ Request::is('dashboard/kapal*', 'dashboard/details*') ? 1 : 0 }} }"
+            class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/kapal*')) {{ 'bg-slate-900' }} @elseif (Request::is('dashboard/details*')) {{ 'bg-slate-900' }} @endif">
+            <div @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true"
+              class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['kapal'])) {{ 'hover:text-white' }} @endif">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
@@ -82,16 +80,17 @@
                 </div>
               </div>
             </div>
+
+            {{-- Nav Item Kapal --}}
             <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
-              <ul
-                class="pl-9 mt-1 ml-3 @if (!Request::is('dashboard/kapal*')) {{ 'hidden' }} @elseif (!Request::is('dashboard/details*')) {{ 'hidden' }} @endif"
-                :class="open ? '!block' : 'hidden'">
+              <ul class="pl-9 mt-1 ml-3" :class="open ? '' : 'hidden'">
                 <li class="mb-1 last:mb-0">
                   <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('kapal.index')) {{ '!text-indigo-500' }} @endif"
                     href="{{ route('kapal.index') }}">
                     <span class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">List Kapal</span>
                   </a>
                 </li>
+
                 <li class="mb-1 last:mb-0">
                   <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('kapal.create')) {{ '!text-indigo-500' }} @endif"
                     href="{{ route('kapal.create') }}">
@@ -99,6 +98,7 @@
                       Kapal</span>
                   </a>
                 </li>
+                
                 <li class="mb-1 last:mb-0">
                   <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('details.index')) {{ '!text-indigo-500' }} @endif"
                     href="{{ route('details.index') }}">
@@ -106,6 +106,7 @@
                       Kapal</span>
                   </a>
                 </li>
+
                 <li class="mb-1 last:mb-0">
                   <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('details.create')) {{ '!text-indigo-500' }} @endif"
                     href="{{ route('details.create') }}">
@@ -116,13 +117,12 @@
               </ul>
             </div>
           </li>
+
           <!-- Penjadwalan -->
-          <li
-            class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/schedules*')) {{ 'bg-slate-900' }} @endif"
-            x-data="{ open: {{ Request::is('dashboard/schedules*') ? 1 : 0 }} }">
-            <div
-              class="block text-slate-200 hover:text-white truncate transition duration-150 @if (Request::is('dashboard/schedules*')) {{ 'hover:text-white' }} @endif"
-              @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
+          <li x-data="{ open: {{ Request::is('dashboard/schedules*') ? 1 : 0 }} }"
+            class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/schedules*')) {{ 'bg-slate-900' }} @endif">
+            <div @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true"
+              class="block text-slate-200 hover:text-white truncate transition duration-150 @if (Request::is('dashboard/schedules*')) {{ 'hover:text-white' }} @endif">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
@@ -145,8 +145,10 @@
                 </div>
               </div>
             </div>
+
+            {{-- Nav Item Penjadwalan --}}
             <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
-              <ul class="pl-9 mt-1 ml-3 @if (!Request::is('dashboard/schedules')) {{ 'hidden' }} @endif" :class="open ? '!block' : 'hidden'">
+              <ul class="pl-9 mt-1 ml-3" :class="open ? '' : 'hidden'">
                 <li class="mb-1 last:mb-0">
                   <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('schedules.index')) {{ '!text-indigo-500' }} @endif"
                     href="{{ route('schedules.index') }}">
@@ -162,6 +164,7 @@
               </ul>
             </div>
           </li>
+
           {{-- Rekapitulasi Data --}}
           <li class="px-3 py-2 rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/rekapitulasi*')) {{ 'bg-slate-900' }} @endif"
             x-data="{ open: {{ Request::is('dashboard/rekapitulasi*') ? 1 : 0 }} }">
@@ -183,13 +186,12 @@
               </div>
             </a>
           </li>
+
           <!-- Settings -->
-          <li
-            class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (in_array(Request::segment(1), ['settings'])) {{ 'bg-slate-900' }} @endif"
-            x-data="{ open: {{ in_array(Request::segment(1), ['settings']) ? 1 : 0 }} }">
-            <div
-              class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(1), ['settings'])) {{ 'hover:text-white' }} @endif"
-              @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
+          <li x-data="{ open: {{ in_array(Request::segment(1), ['settings']) ? 1 : 0 }} }"
+            class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (in_array(Request::segment(1), ['settings'])) {{ 'bg-slate-900' }} @endif">
+            <div @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true"
+              class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(1), ['settings'])) {{ 'hover:text-white' }} @endif">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
@@ -213,14 +215,16 @@
                 </div>
               </div>
             </div>
+
+            {{-- Nav Item Settings --}}
             <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
-              <ul class="pl-9 mt-1 @if (!in_array(Request::segment(1), ['settings'])) {{ 'hidden' }} @endif" :class="open ? '!block' : 'hidden'">
+              <ul class="pl-9 mt-1" :class="open ? '' : 'hidden'">
                 <li class="mb-1 last:mb-0">
-                  <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('account')) {{ '!text-indigo-500' }} @endif"
-                    href="{{ route('profile.show') }}">
+                  <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('account')) {{ '!text-indigo-500' }} @endif" href="{{ route('profile.show') }}">
                     <span class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">My Account</span>
                   </a>
                 </li>
+
                 <li class="mb-1 last:mb-0">
                   <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('notifications')) {{ '!text-indigo-500' }} @endif"
                     href="/tambah-akun">
@@ -247,5 +251,5 @@
       </div>
     </div>
 
-  </div>
+  </aside>
 </div>
