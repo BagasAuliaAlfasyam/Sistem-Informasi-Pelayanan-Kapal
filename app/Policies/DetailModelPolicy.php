@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\DetailModel;
+use App\Models\Details;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class DetailModelPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DetailModel  $detailModel
+     * @param  \App\Models\Details  $detailModel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, DetailModel $detailModel)
+    public function view(User $user, Details $detailModel)
     {
         //
     }
@@ -48,10 +48,10 @@ class DetailModelPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DetailModel  $detailModel
+     * @param  \App\Models\Details  $detailModel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, DetailModel $detailModel)
+    public function update(User $user, Details $detailModel)
     {
         //
     }
@@ -60,10 +60,10 @@ class DetailModelPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DetailModel  $detailModel
+     * @param  \App\Models\Details  $detailModel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, DetailModel $detailModel)
+    public function delete(User $user, Details $detailModel)
     {
         //
     }
@@ -72,10 +72,10 @@ class DetailModelPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DetailModel  $detailModel
+     * @param  \App\Models\Details  $detailModel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, DetailModel $detailModel)
+    public function restore(User $user, Details $detailModel)
     {
         //
     }
@@ -84,10 +84,10 @@ class DetailModelPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DetailModel  $detailModel
+     * @param  \App\Models\Details  $detailModel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, DetailModel $detailModel)
+    public function forceDelete(User $user, Details $detailModel)
     {
         //
     }
