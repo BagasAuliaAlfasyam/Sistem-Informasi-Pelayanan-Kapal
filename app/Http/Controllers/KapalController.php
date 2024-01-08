@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreKapalRequest;
-use App\Http\Requests\UpdateKapalRequest;
+use App\Http\Requests\StoreKapal;
+use App\Http\Requests\UpdateKapal;
 use App\Models\Details;
-use App\Models\KapalModel;
+use App\Models\Kapal;
 use App\Models\Schedule;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class KapalController extends Controller
      */
     public function index()
     {
-        $ships = KapalModel::paginate(10)->withPath(route('kapal.index'));
+        $ships = Kapal::paginate(10)->withPath(route('kapal.index'));
         $keperluan = Details::all();
         return view('pages.kapal.list-kapal.index', [
             'ships' => $ships,
@@ -40,22 +40,22 @@ class KapalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreKapalRequest  $request
+     * @param  \App\Http\Requests\StoreKapal  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreKapalRequest $request)
+    public function store(StoreKapal $request)
     {
-        KapalModel::create($request->validated());
+        Kapal::create($request->validated());
         return redirect()->route('kapal.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\KapalModel  $kapalModel
+     * @param  \App\Models\Kapal  $kapal
      * @return \Illuminate\Http\Response
      */
-    public function show(KapalModel $kapalModel)
+    public function show(Kapal $kapal)
     {
         //
     }
@@ -63,10 +63,10 @@ class KapalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\KapalModel  $kapal
+     * @param  \App\Models\Kapal  $kapal
      * @return \Illuminate\Http\Response
      */
-    public function edit(KapalModel $kapal)
+    public function edit(Kapal $kapal)
     {
         return view('pages.kapal.list-kapal.edit', compact('kapal'));
     }
@@ -74,11 +74,11 @@ class KapalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateKapalRequest  $request
-     * @param  \App\Models\KapalModel  $kapalModel
+     * @param  \App\Http\Requests\UpdateKapal  $request
+     * @param  \App\Models\Kapal  $kapal
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKapalRequest $request, KapalModel $kapal)
+    public function update(UpdateKapal $request, Kapal $kapal)
     {
         $kapal::where('id', $kapal->id)->update($request->validated());
         return redirect()->route('kapal.index');
@@ -87,10 +87,10 @@ class KapalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\KapalModel  $kapal
+     * @param  \App\Models\Kapal  $kapal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KapalModel $kapal)
+    public function destroy(Kapal $kapal)
     {
         $kapal::destroy($kapal->id);
 
@@ -107,8 +107,8 @@ class KapalController extends Controller
 
     public function recapitulation()
     {
-        $ships = KapalModel::paginate(10)->withPath(route('rekapitulasi.index'));
-        $kapal = KapalModel::all();
+        $ships = Kapal::paginate(10)->withPath(route('rekapitulasi.index'));
+        $kapal = Kapal::all();
         $penjadwalan = Schedule::all();
         if (count($kapal) != count($penjadwalan)) {
             return redirect()

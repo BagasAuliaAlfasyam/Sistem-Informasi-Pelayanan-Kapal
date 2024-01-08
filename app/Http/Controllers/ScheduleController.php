@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSchedule;
 use App\Http\Requests\UpdateSchedule;
-use App\Models\KapalModel;
+use App\Models\Kapal;
 use App\Models\Schedule;
 
 class ScheduleController extends Controller
@@ -17,7 +17,7 @@ class ScheduleController extends Controller
     public function index()
     {
         $schedules = Schedule::paginate(10)->withPath(route('schedules.index'));
-        $kapal = KapalModel::all();
+        $kapal = Kapal::all();
         return view('pages.kapal.penjadwalan-kapal.index', ['ships' => $kapal, 'schedules' => $schedules]);
     }
 
@@ -28,7 +28,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('pages.kapal.penjadwalan-kapal.create', ['ships' => KapalModel::all()]);
+        return view('pages.kapal.penjadwalan-kapal.create', ['ships' => Kapal::all()]);
     }
 
     /**

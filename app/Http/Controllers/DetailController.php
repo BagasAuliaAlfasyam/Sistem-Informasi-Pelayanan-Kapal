@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Details;
+use App\Http\Requests\StoreDetails;
 use App\Http\Requests\UpdateDetails;
-use App\Models\Details as ModelsDetails;
-use App\Models\KapalModel;
+use App\Models\Details;
+use App\Models\Kapal;
 
 class DetailController extends Controller
 {
@@ -16,7 +16,7 @@ class DetailController extends Controller
      */
     public function index()
     {
-        $details = ModelsDetails::paginate(10)->withPath(route('details.index'));
+        $details = Details::paginate(10)->withPath(route('details.index'));
         return view('pages.kapal.rincian.index', ['details' => $details]);
     }
 
@@ -27,18 +27,19 @@ class DetailController extends Controller
      */
     public function create()
     {
-        return view('pages.kapal.rincian.add', ['ships' => KapalModel::all()]);
+        return view('pages.kapal.rincian.add', ['ships' => Kapal::all()]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateKapalRequest  $request
+     * @param  \App\Models\Details  $detail
      * @return \Illuminate\Http\Response
      */
-    public function store(Details $request)
+    public function store(StoreDetails $request, Details $detail)
     {
-        ModelsDetails::create($request->validated());
+        $detail::create($request->validated());
         return redirect()->route('details.index');
     }
 
@@ -59,7 +60,7 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ModelsDetails $detail)
+    public function edit(Details $detail)
     {
         return view('pages.kapal.rincian.edit', compact('detail'));
     }
@@ -71,7 +72,7 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDetails $request, ModelsDetails $detail)
+    public function update(UpdateDetails $request, Details $detail)
     {
         $detail::where('id', $detail->id)->update($request->validated());
         return redirect()->route('details.index');
@@ -83,7 +84,7 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ModelsDetails $id)
+    public function destroy(Details $id)
     {
         //
     }
