@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KapalModel extends Model
+class Kapal extends Model
 {
     use HasFactory;
 
@@ -19,6 +19,6 @@ class KapalModel extends Model
 
     public function penjadwalan()
     {
-        return $this->hasOne(Schedule::class, 'id_kapal');
+        return $this->hasMany(Schedule::class, 'id_kapal', 'id');
     }
 }
