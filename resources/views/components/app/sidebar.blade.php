@@ -104,33 +104,12 @@
                                             Kapal</span>
                                     </a>
                                 </li>
-
-                                <li class="mb-1 last:mb-0">
-                                    <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('kapal.create')) {{ '!text-indigo-500' }} @endif"
-                                        href="{{ route('kapal.create') }}">
-                                        <span
-                                            class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Tambah
-                                            Data
-                                            Kapal</span>
-                                    </a>
-                                </li>
-
                                 <li class="mb-1 last:mb-0">
                                     <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('details.index')) {{ '!text-indigo-500' }} @endif"
                                         href="{{ route('details.index') }}">
                                         <span
                                             class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Rincian
                                             Data
-                                            Kapal</span>
-                                    </a>
-                                </li>
-
-                                <li class="mb-1 last:mb-0">
-                                    <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('details.create')) {{ '!text-indigo-500' }} @endif"
-                                        href="{{ route('details.create') }}">
-                                        <span
-                                            class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Tambah
-                                            Rincian
                                             Kapal</span>
                                     </a>
                                 </li>
@@ -161,63 +140,6 @@
                             </div>
                         </a>
                     </li>
-
-                    <!-- Penjadwalan -->
-                    <li x-data="{ open: {{ Request::is('dashboard/schedules*') ? 1 : 0 }} }"
-                        class="px-3 py-2 cursor-pointer rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/schedules*')) {{ 'bg-slate-900' }} @endif">
-                        <div @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true"
-                            class="block text-slate-200 hover:text-white truncate transition duration-150 @if (Request::is('dashboard/schedules*')) {{ 'hover:text-white' }} @endif">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                                        <path
-                                            class="fill-current @if (Request::is('dashboard/schedules*')) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                                            d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z" />
-                                        <path
-                                            class="fill-current @if (Request::is('dashboard/schedules*')) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                                            d="M1 1h22v23H1z" />
-                                        <path
-                                            class="fill-current @if (Request::is('dashboard/schedules*')) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                                            d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z" />
-                                    </svg>
-                                    <span
-                                        class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Penjadwalan
-                                        Kapal</span>
-                                </div>
-                                <!-- Icon -->
-                                <div
-                                    class="flex shrink-0 ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                    <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 @if (in_array(Request::segment(1), ['tasks'])) {{ 'rotate-180' }} @endif"
-                                        :class="open ? 'rotate-180' : 'rotate-0'" viewBox="0 0 12 12">
-                                        <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Nav Item Penjadwalan --}}
-                        <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                            <ul class="pl-9 mt-1 ml-3" :class="open ? '' : 'hidden'">
-                                <li class="mb-1 last:mb-0">
-                                    <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('schedules.index')) {{ '!text-indigo-500' }} @endif"
-                                        href="{{ route('schedules.index') }}">
-                                        <span
-                                            class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">List
-                                            Jadwal</span>
-                                    </a>
-                                </li>
-                                <li class="mb-1 last:mb-0">
-                                    <a class="block text-slate-400 hover:text-white transition duration-150 truncate @if (Route::is('schedules.create')) {{ '!text-indigo-500' }} @endif"
-                                        href="{{ route('schedules.create') }}">
-                                        <span
-                                            class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Tambah
-                                            Jadwal</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
                     {{-- Rekapitulasi Data --}}
                     <li class="px-3 py-2 rounded-sm mb-0.5 hover:bg-slate-600 last:mb-0 @if (Request::is('dashboard/rekapitulasi*')) {{ 'bg-slate-900' }} @endif"
                         x-data="{ open: {{ Request::is('dashboard/rekapitulasi*') ? 1 : 0 }} }">
