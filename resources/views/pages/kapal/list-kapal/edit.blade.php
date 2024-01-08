@@ -81,8 +81,8 @@
       <div class="mb-4">
         <label for="pemilik" class="block mb-3">Pemilik</label>
         <select class="select select-bordered @error ('pemilik') select-error @enderror w-full bg-slate-800" id="pemilik" name="pemilik" required>
-          <option value="1" {{ $kapal->pemilik == 1 ? 'selected' : '' }}>Pemilik</option>
-          <option value="0" {{ $kapal->pemilik == 0 ? 'selected' : '' }}>Non-Pemilik</option>>
+          <option value="1" {{ $kapal->pemilik == 1 ? 'selected' : '' }}>Pelindo</option>
+          <option value="0" {{ $kapal->pemilik == 0 ? 'selected' : '' }}>Luar Negeri</option>>
         </select>
       </div>Pemilik
       @error ('pemilik')
