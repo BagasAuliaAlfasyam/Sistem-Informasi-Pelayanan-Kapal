@@ -24,14 +24,14 @@
         </thead>
         <tbody class="capitalize">
           @foreach ($ships as $kapal)
-              
+
             <tr class="hover:bg-slate-200 hover:text-slate-500">
               <th>{{ $ships->firstItem() + $loop->index }}</th>
               <td>{{ $kapal->nama_kapal }}</td>
               <td>{{ $kapal->keagenan }}</td>
               <td>{{ $kapal->loa }}</td>
               <td>{{ $kapal->gt }}</td>
-              <td>{{ $kapal->pemilik == 1 ? 'Pemilik' : 'Non-Pemilik' }}</td>
+              <td>{{ $kapal->pemilik == 1 ? 'Pelindo' : 'Luar Negeri' }}</td>
               <td>{{ $kapal->bendera }}</td>
               <td class="flex justify-center gap-2">
                 <button class="hover:text-blue-600" type="button" onclick="kapal_{{ $kapal->id }}.showModal()">
