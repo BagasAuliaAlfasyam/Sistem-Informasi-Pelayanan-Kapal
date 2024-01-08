@@ -20,9 +20,11 @@
     if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
       document.querySelector('html').classList.remove('dark');
       document.querySelector('html').style.colorScheme = 'light';
+      document.querySelector('html').setAttribute('data-theme', 'light')
     } else {
       document.querySelector('html').classList.add('dark');
       document.querySelector('html').style.colorScheme = 'dark';
+      document.querySelector('html').setAttribute('data-theme', 'dark')
     }
   </script>
 </head>
@@ -40,6 +42,8 @@
 
   <!-- Page wrapper -->
   <div class="flex h-screen overflow-hidden">
+
+    <span class="hidden alert-error"></span>
 
     <x-app.sidebar />
 
