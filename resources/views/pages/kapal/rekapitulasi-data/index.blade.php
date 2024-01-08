@@ -32,8 +32,8 @@
         </div>
 
         <div id="filtered-data" class="overflow-x-auto mt-4">
-            <table id="filtered-table" class="table table-xs text-center even:bg-slate-500">
-                <thead class="text-slate-600">
+            <table id="filtered-table" class="table table-xs text-center bg-slate-500/20">
+                <thead class="text-slate-600 dark:text-slate-400">
                     <tr>
                         <th rowspan="2">No.</th>
                         <th rowspan="2">Nama Kapal</th>
@@ -61,7 +61,7 @@
                 </thead>
                 <tbody class="capitalize">
                     @foreach ($ships as $kapal)
-                        <tr class="hover:bg-slate-200 hover:text-slate-500"
+                        <tr class="hover"
                             x-show="(selectedMonth === '' || parseInt(selectedMonth) === {{ Carbon\Carbon::parse($kapal->created_at)->format('m') }}) && (selectedYear === '' || parseInt(selectedYear) === {{ Carbon\Carbon::parse($kapal->created_at)->format('Y') }})">
                             <th>{{ $ships->firstItem() + $loop->index }}</th>
                             <td>{{ $kapal->nama_kapal }}</td>
@@ -73,12 +73,12 @@
                             <td>{{ $kapal->penjadwalan->tujuan }}</td>
                             <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_rencana_berangkat)->format('d-m-Y') }}
                             </td>
-                            <td>{{ $kapal->keperluan->bongkar ?? '0' }}</td>
-                            <td>{{ $kapal->keperluan->muat_barang ?? '0' }}</td>
-                            <td>{{ $kapal->keperluan->jenis_barang ?? 'Tidak Ada' }}</td>
+                            <td>{{ $kapal->keperluan->bongkar ?? '-' }}</td>
+                            <td>{{ $kapal->keperluan->muat_barang ?? '-' }}</td>
+                            <td>{{ $kapal->keperluan->jenis_barang ?? '-' }}</td>
                             <td>{{ $kapal->penjadwalan->posisi_tambat }}</td>
                             <td>{{ $kapal->bendera }}</td>
-                            <td>{{ $kapal->keperluan->keterangan ?? 'Tidak Ada Keterangan' }}</td>
+                            <td>{{ $kapal->keperluan->keterangan ?? '-' }}</td>
                             <td>{{ $kapal->created_at->format('d-m-Y') }}</td>
                         </tr>
                     @endforeach
