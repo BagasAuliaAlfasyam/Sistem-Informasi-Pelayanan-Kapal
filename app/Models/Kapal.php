@@ -14,11 +14,11 @@ class Kapal extends Model
     
     public function keperluan()
     {
-        return $this->hasOne(Details::class, 'id_kapal');
+        return $this->hasOne(Details::class, 'kapal_id');
     }
 
     public function penjadwalan()
     {
-        return $this->hasMany(Schedule::class, 'id_kapal', 'id');
+        return $this->hasMany(Schedule::class);
     }
 }

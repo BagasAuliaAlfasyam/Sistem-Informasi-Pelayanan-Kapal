@@ -11,4 +11,7 @@ class Schedule extends Model
     protected $table = 'schedules';
     protected $guarded = ['id'];
 
+    public function kapal() {
+        return $this->belongsTo(Kapal::class, 'kapal_id');
+    }
 }
