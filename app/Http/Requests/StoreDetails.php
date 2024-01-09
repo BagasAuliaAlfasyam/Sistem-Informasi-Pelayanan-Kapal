@@ -24,7 +24,7 @@ class StoreDetails extends FormRequest
     public function rules()
     {
         return [
-            'id_kapal'      => 'required|unique:App\Models\Details,id_kapal',
+            'kapal_id'      => 'required|unique:App\Models\Details,kapal_id',
             'nama_kapal'    => 'required',
             'muat_barang'   => 'nullable|numeric',
             'bongkar'       => 'nullable|numeric',

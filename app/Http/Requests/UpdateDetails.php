@@ -24,7 +24,7 @@ class UpdateDetails extends FormRequest
     public function rules()
     {
         return [
-            'id_kapal'      => 'required',
+            'kapal_id'      => 'required',
             'nama_kapal'    => 'required',
             'muat_barang'   => 'nullable|numeric',
             'bongkar'       => 'nullable|numeric',

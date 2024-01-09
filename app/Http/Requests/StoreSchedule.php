@@ -24,7 +24,7 @@ class StoreSchedule extends FormRequest
     public function rules()
     {
         return [
-            'id_kapal'                  => 'required|unique:App\Models\Schedule,id_kapal',
+            'kapal_id'                  => 'required|unique:App\Models\Schedule,kapal_id',
             'nama_kapal'                => 'required',
             'tanggal_tiba'              => 'nullable|date',
             'tiba_dari'                 => 'nullable',

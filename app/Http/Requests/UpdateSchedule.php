@@ -24,7 +24,7 @@ class UpdateSchedule extends FormRequest
     public function rules()
     {
         return [
-            'id_kapal'                  => 'required',
+            'kapal_id'                  => 'required',
             'nama_kapal'                => 'required',
             'tanggal_tiba'              => 'nullable|date',
             'tiba_dari'                 => 'nullable',
