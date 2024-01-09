@@ -60,7 +60,7 @@
                     </tr>
                 </thead>
                 <tbody class="capitalize">
-                    @foreach ($ships as $kapal)
+                    @forelse ($ships as $kapal)
                         <tr class="hover"
                             x-show="(selectedMonth === '' || parseInt(selectedMonth) === {{ Carbon\Carbon::parse($kapal->created_at)->format('m') }}) && (selectedYear === '' || parseInt(selectedYear) === {{ Carbon\Carbon::parse($kapal->created_at)->format('Y') }})">
                             <th>{{ $ships->firstItem() + $loop->index }}</th>
@@ -68,20 +68,21 @@
                             <td>{{ $kapal->keagenan }}</td>
                             <td>{{ $kapal->loa }}</td>
                             <td>{{ $kapal->gt }}</td>
-                            <td>{{ $kapal->penjadwalan->tiba_dari }}</td>
-                            <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_tiba)->format('d-m-Y') }}</td>
-                            <td>{{ $kapal->penjadwalan->tujuan }}</td>
-                            <td>{{ Carbon\Carbon::parse($kapal->penjadwalan->tanggal_rencana_berangkat)->format('d-m-Y') }}
-                            </td>
+                            <td>{{ $kapal->penjadwalan[$loop->index]->tiba_dari ?? '-' }}</td>
+                            <td>{{ Carbon\Carbon::parse($kapal->penjadwalan[$loop->index]->tanggal_tiba ?? null)->format('d-m-Y') }}</td>
+                            <td>{{ $kapal->penjadwalan[$loop->index]->tujuan ?? '-' }}</td>
+                            <td>{{ Carbon\Carbon::parse($kapal->penjadwalan[$loop->index]->tanggal_rencana_berangkat ?? null)->format('d-m-Y') }}</td>
                             <td>{{ $kapal->keperluan->bongkar ?? '-' }}</td>
                             <td>{{ $kapal->keperluan->muat_barang ?? '-' }}</td>
                             <td>{{ $kapal->keperluan->jenis_barang ?? '-' }}</td>
-                            <td>{{ $kapal->penjadwalan->posisi_tambat }}</td>
+                            <td>{{ $kapal->penjadwalan[$loop->index]->posisi_tambat ?? '-' }}</td>
                             <td>{{ $kapal->bendera }}</td>
                             <td>{{ $kapal->keperluan->keterangan ?? '-' }}</td>
                             <td>{{ $kapal->created_at->format('d-m-Y') }}</td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr><td colspan="16">Rekap tidak tersedia</td></tr>
+                    @endforelse
                 </tbody>
             </table>
 

@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody class="capitalize">
-          @foreach ($details as $detail)
+          @forelse ($details as $detail)
             <tr class="hover">
               <th>{{ $details->firstItem() + $loop->index }}</th>
               <td>{{ $detail->nama_kapal }}</td>
@@ -33,7 +33,9 @@
                 </a>
               </td>
             </tr>
-          @endforeach
+          @empty 
+            <tr><td colspan="7">Rincian kapal tidak ada</td></tr>
+          @endforelse
         </tbody>
       </table>
 
