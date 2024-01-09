@@ -42,7 +42,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('rekapitulasi-data', [KapalController::class, 'recapitulation'])->name('rekapitulasi.index');
     });
 
-    Route::redirect('/tambah-akun', 'register')->name('register');
+    Route::get('/tambah-akun', [DashboardController::class, 'addUser'])->name('add-user');
+    Route::post('/tambah-akun', [DashboardController::class, 'storeNewUser'])->name('store-new-user');
 
     // Route if page not found
     Route::fallback(function () {
