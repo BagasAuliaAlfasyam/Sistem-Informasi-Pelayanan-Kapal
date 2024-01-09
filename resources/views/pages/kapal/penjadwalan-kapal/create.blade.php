@@ -27,9 +27,9 @@
                 @enderror
             </section>
 
-            <input type="hidden" name="id_kapal" value="" class="kapal-input">
+            <input type="hidden" name="kapal_id" value="" class="kapal-input">
 
-            {{-- Mengatur input id_kapal agar menyesuaikan dengan pilihan select kapal --}}
+            {{-- Mengatur input kapal_id agar menyesuaikan dengan pilihan select kapal --}}
             <script>
                 const kapalSelect = document.getElementById('kapal');
                 const kapalInput = document.querySelector('.kapal-input');
