@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_kapal')->nullable();
-            $table->foreign('id_kapal')->references('id')->on('kapal')->onDelete('cascade');
+            $table->unsignedBigInteger('kapal_id')->nullable();
+            $table->foreign('kapal_id')->references('id')->on('kapal')->onDelete('cascade');
             $table->string('nama_kapal');
             $table->date('tanggal_tiba');
             $table->string('tiba_dari');
