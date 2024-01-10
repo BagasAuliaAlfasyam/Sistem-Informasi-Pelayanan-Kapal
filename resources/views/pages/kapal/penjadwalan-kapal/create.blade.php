@@ -14,7 +14,8 @@
                     <select class="select select-bordered @error('nama_kapal') select-error @enderror w-full"
                         id="kapal" name="nama_kapal" required>
                         @foreach ($ships as $kapal)
-                        <option value="{{ $kapal->nama_kapal }}" data-id="{{ $kapal->id }}">{{ $kapal->nama_kapal }}</option>
+                        <option value="{{ $kapal->nama_kapal }}" data-id="{{ $kapal->id }}">{{ $kapal->id }}: ~ &ThickSpace;
+                            {{ $kapal->nama_kapal }}</option>
                         @endforeach
                         <option value="" selected disabled>{{ "-" }}</option>
                     </select>
