@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kapal;
 use App\Models\KapalModel;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class KapalModelSeeder extends Seeder
@@ -248,11 +248,11 @@ class KapalModelSeeder extends Seeder
                 'pemilik' => 0,
                 'bendera' => 'Indonesia',
             ],
-            
+
         ];
 
         foreach ($ships as $ship) {
-            KapalModel::create($ship);
+            Kapal::create($ship);
         }
     }
 }
