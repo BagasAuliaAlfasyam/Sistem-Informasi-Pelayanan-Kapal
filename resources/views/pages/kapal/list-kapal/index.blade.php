@@ -67,7 +67,7 @@
 
             @foreach ($keperluan as $detail)
                 <!-- Open the modal using ID.showModal() method -->
-                <dialog id="kapal_{{ $detail->id_kapal }}" class="modal">
+                <dialog id="kapal_{{ $detail->kapal_id }}" class="modal">
                     <form method="dialog" class="modal-box w-11/12 max-w-5xl shadow shadow-white">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         <h3 class="font-bold text-lg mb-4 pl-3">Rincian</h3>
